@@ -15,13 +15,17 @@
 #
 def triangle(a, b, c)
   # WRITE THIS CODE
-  if a == b && b == c
+  raise TriangleError, "All sides must be positive number" if a <= 0 || b <= 0 || c <= 0
+  raise TriangleError, "Impossible triangle" if ( a + b + c - ( 2 *  [a,b,c].max ) <= 0  )
+
+  if a == b && a == c
     :equilateral
   elsif a == b || b == c || a == c
     :isosceles
   else
     :scalene
   end
+
 end
 
 # Error class used in part 2.  No need to change this code.
